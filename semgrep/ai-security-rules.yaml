@@ -1,0 +1,151 @@
+rules:
+
+  # ─── RULE 1: LLM02 — PII/Sensitive Data in System Prompt ───────────────
+  - id: llm-sensitive-data-in-system-prompt
+    patterns:
+      - pattern: |
+          $PROMPT = "...$DATA..."
+      - metavariable-regex:
+          metavariable: $DATA
+          regex: (account|balance|sort.code|customer|password|secret|key|token)
+    message: |
+      Sensitive data detected in what appears to be a system prompt string.
+      Hardcoding customer data or credentials in prompts violates LLM02
+      (Sensitive Information Disclosure). Fetch sensitive data via
+      authenticated API calls only when needed.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      owasp: LLM02
+      atlas: AML.T0057
+      cwe: CWE-312
+      category: ai-security
+
+  # ─── RULE 2: LLM01 — Missing Input Sanitisation on LLM Endpoint ────────
+  - id: llm-missing-input-sanitisation
+    patterns:
+      - pattern: |
+          @$APP.route($PATH, methods=[..., "POST", ...])
+          def $FUNC():
+              ...
+              $VAR = $REQUEST.get_json()
+              ...
+              $MSG = $VAR["message"]
+              ...
+    message: |
+      Flask POST endpoint extracts user input directly with no sanitisation
+      before processing. If this input is passed to an LLM this enables
+      prompt injection (LLM01). Validate and sanitise all user input before
+      passing to any LLM or tool.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      owasp: LLM01
+      atlas: AML.T0051
+      cwe: CWE-20
+      category: ai-security
+
+  # ─── RULE 3: LLM05 — Raw LLM Output Returned Without Filtering ─────────
+  - id: llm-unfiltered-output-returned
+    patterns:
+      - pattern: |
+          return jsonify({..., $KEY: $VAR, ...})
+      - metavariable-regex:
+          metavariable: $KEY
+          regex: (response|output|result|answer|text|content)
+    message: |
+      LLM response appears to be returned directly to the user without
+      output filtering or PII scanning. This enables LLM05 (Improper Output
+      Handling) — the model may return sensitive data, PII, or malicious
+      content. Implement output filtering before returning responses.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      owasp: LLM05
+      atlas: AML.T0057
+      cwe: CWE-116
+      category: ai-security
+
+  # ─── RULE 4: LLM06 — Tool Function With No Authentication Check ─────────
+  - id: llm-tool-no-auth-check
+    patterns:
+      - pattern: |
+          def $FUNC($TO, $SUBJECT, $BODY):
+              ...
+      - metavariable-regex:
+          metavariable: $FUNC
+          regex: (send_email|send_message|execute|transfer|delete|export)
+    message: |
+      High-impact tool function detected with no authentication or
+      authorisation check. If exposed to an LLM agent this creates
+      LLM06 (Excessive Agency) — prompt injection can trigger this
+      function without human approval. Add authentication checks and
+      human-in-the-loop approval before execution.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      owasp: LLM06
+      atlas: AML.T0051
+      cwe: CWE-862
+      category: ai-security
+
+  # ─── RULE 5: General — Flask Debug Mode in Production ───────────────────
+  - id: flask-debug-mode-enabled
+    pattern: $APP.run(..., debug=True, ...)
+    message: |
+      Flask application running with debug=True. This exposes the
+      Werkzeug interactive debugger which allows arbitrary code execution
+      on the server. Never run debug=True in production.
+      Set debug=False or use environment variable: debug=os.getenv('DEBUG', False)
+    languages: [python]
+    severity: ERROR
+    metadata:
+      owasp: LLM05
+      cwe: CWE-94
+      category: security
+
+  # ─── RULE 6: LLM02 — Unauthenticated History Endpoint ──────────────────
+  - id: llm-unauthenticated-history-endpoint
+    patterns:
+      - pattern: |
+          @$APP.route($PATH, methods=["GET"])
+          def $FUNC():
+              ...
+              return jsonify({...: $HISTORY, ...})
+      - metavariable-regex:
+          metavariable: $PATH
+          regex: .*(history|log|conversation|session|chat).*
+    message: |
+      Endpoint returning conversation history or logs with no authentication.
+      This exposes full conversation history including system prompts and
+      sensitive data to any unauthenticated caller (LLM02).
+      Require authentication on all endpoints that return conversation data.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      owasp: LLM02
+      atlas: AML.T0057
+      cwe: CWE-306
+      category: ai-security
+
+  # ─── RULE 7: LLM07 — System Prompt Stored in Plain Code ────────────────
+  - id: llm-system-prompt-in-code
+    patterns:
+      - pattern: |
+          $VAR = """...$CONTENT..."""
+      - metavariable-regex:
+          metavariable: $VAR
+          regex: (SYSTEM_PROMPT|system_prompt|PROMPT|prompt_template)
+    message: |
+      System prompt appears to be hardcoded in source code. System prompts
+      stored in code are visible to anyone with code access and cannot be
+      rotated without redeployment (LLM07 — System Prompt Leakage).
+      Store system prompts in environment variables or a secrets manager.
+      Never include sensitive data, credentials, or override codes in prompts.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      owasp: LLM07
+      atlas: AML.T0056
+      cwe: CWE-312
+      category: ai-security

@@ -1,0 +1,24 @@
+# Bandit configuration — reusable across projects
+# Reference: https://bandit.readthedocs.io/en/latest/config.html
+
+# Skip these checks entirely (none skipped by default — start strict,
+# loosen only with a documented reason if a check produces persistent
+# false positives for a specific, understood pattern)
+skips: []
+
+# Exclude these paths from scanning — virtual envs and caches are not
+# your code, scanning them wastes time and produces noise from
+# third-party library code you don't control
+exclude_dirs:
+  - '.venv'
+  - 'venv'
+  - '__pycache__'
+  - '.git'
+  - 'node_modules'
+
+# Minimum severity to report: LOW, MEDIUM, or HIGH
+# LOW means "show me everything" — appropriate while you're actively
+# tightening a new project's code; can be raised to MEDIUM later if
+# LOW-severity findings become noise rather than signal
+assert_used:
+  skips: []

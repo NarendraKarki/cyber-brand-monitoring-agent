@@ -1,0 +1,3 @@
+# Brand & Domain Monitor runs on the Python standard library only.
+# socket (DNS resolution), urllib (HTTP to crt.sh), json, and time
+# are all built in. No third-party dependencies required for v1.

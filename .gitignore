@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Scan reports contain IP addresses and domain registration data
+# from live runs — useful locally, not meant for version control
+reports/*.json
+
+# Cached IANA TLD list — large, easily re-fetched, not meaningful
+# to track in git (changes ~monthly at most, regenerable on demand)
+tld_cache/

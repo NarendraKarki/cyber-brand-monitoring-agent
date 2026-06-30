@@ -1,0 +1,42 @@
+name: Security Scan (SAST)
+
+# Trigger on every push and every pull request — this is what makes
+# the check automatic rather than something you remember to run manually
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  bandit-and-semgrep:
+    # GitHub provides this virtual machine for free, destroyed after the job finishes
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: pull your repo's code into the virtual machine
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: install Python on the virtual machine
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Step 3: install the scanning tools
+      - name: Install Bandit and Semgrep
+        run: |
+          pip install bandit semgrep
+
+      # Step 4: run Bandit using our shared config
+      # The "|| true" trick is intentionally NOT used here — if Bandit
+      # finds something and exits non-zero, we WANT the workflow to fail
+      - name: Run Bandit SAST scan
+        run: |
+          bandit -r . -c bandit/bandit.yaml -f txt -v
+
+      # Step 5: run Semgrep using our custom AI security rules
+      - name: Run Semgrep custom rules
+        run: |
+          semgrep --config semgrep/ai-security-rules.yaml . --error
