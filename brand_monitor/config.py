@@ -10,7 +10,7 @@ no third-party dependencies for the core lookup logic.
 # ── Target brand to protect ─────────────────────────────────────────
 # IANA-reserved domain — safe, unambiguous test target for v1.
 # No authorization questions, no risk of touching real infrastructure.
-PROTECTED_DOMAIN = "example.com"
+PROTECTED_DOMAIN = "acmebank.uk"
 
 # ── Lookalike generation rules ──────────────────────────────────────
 # Common keyboard-adjacent substitutions used in real typosquatting.
