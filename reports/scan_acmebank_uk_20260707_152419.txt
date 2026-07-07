@@ -1,0 +1,112 @@
+
+============================================================
+  CYBER DOMAIN AND BRAND MONITORING AI AGENT
+  Protected brand: acmebank.uk
+  Scan started:    2026-07-07 15:14:15 UTC
+  Scan completed:  2026-07-07 15:24:19 UTC
+============================================================
+
+  SCAN SUMMARY
+────────────────────────────────────────────────────────────
+  Variants checked:  19
+  Resolving domains: 3
+  Domains analysed:  3
+
+  🔴 HIGH risk:      3
+  🟡 MEDIUM risk:    0
+  🟢 LOW risk:       0
+────────────────────────────────────────────────────────────
+
+  🔴 HIGH RISK FINDINGS
+────────────────────────────────────────────────────────────
+
+  Domain:       acmebank.co
+  IP:           3.33.130.190
+  Risk score:   8/10  |  Threat type: PHISHING
+  Urgency:      ⚡ IMMEDIATE ACTION REQUIRED
+  Certificates: 0 issued
+  Content:      PHISHING (HIGH confidence)
+  Indicators:   credential harvesting indicator, financial language
+  Analysis:     The domain acmebank.co is a high-risk phishing site
+                that redirects to a landing page and uses financial
+                language, indicating an attempt to harvest
+                credentials. This represents an active threat to the
+                protected brand acmebank.uk.
+  Actions:
+    → Monitor the domain for further activity
+    → Notify customers of potential phishing attempts
+-------------------------------------------------------
+
+  Domain:       acmebank.com
+  IP:           76.223.54.146
+  Risk score:   8/10  |  Threat type: PHISHING
+  Urgency:      ⚡ IMMEDIATE ACTION REQUIRED
+  Certificates: 0 issued
+  Content:      PHISHING (HIGH confidence)
+  Indicators:   credential harvesting indicator, financial language
+  Analysis:     The domain acmebank.com is likely an active phishing
+                threat, redirecting to a landing page and using
+                financial language to harvest credentials. As it's not
+                issuing certificates, this represents a high-risk
+                scenario for the protected brand acmebank.uk.
+  Actions:
+    → Monitor the domain for further activity
+    → Notify relevant stakeholders of potential phishing attempts
+-------------------------------------------------------
+
+  Domain:       acmebank.org
+  IP:           108.157.113.73
+  Risk score:   8/10  |  Threat type: PHISHING
+  Urgency:      ⚡ IMMEDIATE ACTION REQUIRED
+  Certificates: 0 issued
+  Content:      PHISHING (HIGH confidence)
+  Indicators:   login forms, financial language, credential harvesting indicators
+  Analysis:     This domain, acmebank.org, is actively impersonating
+                AcmeBank with a login form and financial language,
+                indicating a high-risk phishing attempt. The lack of
+                certificates issued and unknown most recent cert
+                further supports this assessment.
+  Actions:
+    → Monitor the domain for any changes
+    → Notify relevant stakeholders and security teams
+-------------------------------------------------------
+
+============================================================
+  RESPONSE WORKFLOW FOR HIGH RISK FINDINGS
+============================================================
+
+  Step 1 — Verify manually:
+    Open domain. Screenshot. Do NOT click links.
+
+  Step 2 — Report to Google Safe Browsing (FREE):
+    safebrowsing.google.com/safebrowsing/report_phish
+    Blocks in Chrome for 2 billion users within hours.
+
+  Step 3 — Report to domain registrar:
+    WHOIS lookup → submit abuse report with evidence.
+    Expect 24-72 hours from cooperative registrars.
+
+  Step 4 — Report to hosting provider:
+    IP lookup → separate abuse report to host.
+    Cloudflare/major providers: 24-48 hours.
+
+  Step 5 — Report to national authority:
+    UK:  report.ncsc.gov.uk
+    BH:  cert@bh.cert.gov.bh (BH-CERT)
+    SA:  report@cert.gov.sa (CERT-SA)
+
+  Step 6 — Block at gateway NOW:
+    Add to email security + web proxy immediately.
+    Do not wait for takedown to protect your users.
+
+  Step 7 — UDRP if registrar unresponsive:
+    ICANN UDRP filing. Cost: £8,000-12,000.
+    Reserved for persistent high-impact threats.
+────────────────────────────────────────────────────────────
+
+  Cyber Domain and Brand Monitoring AI Agent
+  Module 7 — AI Security Platform
+  github.com/NarendraKarki/cyber-domain-monitoring-ai-agent
+  All LLM inference local — no data leaves your environment
+
+============================================================

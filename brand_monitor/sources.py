@@ -114,7 +114,7 @@ def check_certificate_transparency(domain: str) -> dict:
     )
 
     try:
-        with urllib.request.urlopen(
+        with urllib.request.urlopen(  # nosec B310
             request, timeout=config.REQUEST_TIMEOUT_SECONDS
         ) as response:
             raw = response.read().decode("utf-8")
@@ -176,7 +176,7 @@ def fetch_iana_tld_list(force_refresh: bool = False) -> list[str]:
         config.IANA_TLD_LIST_URL,
         headers={"User-Agent": "brand-domain-monitor/0.1 (research)"},
     )
-    with urllib.request.urlopen(
+    with urllib.request.urlopen(  # nosec B310
         request, timeout=config.REQUEST_TIMEOUT_SECONDS
     ) as response:
         raw = response.read().decode("utf-8")
