@@ -10,3 +10,6 @@ reports/*.json
 # Cached IANA TLD list — large, easily re-fetched, not meaningful
 # to track in git (changes ~monthly at most, regenerable on demand)
 tld_cache/
+domain_monitor/files/ 
+domain_monitor/files.zip 
+reports/ 
