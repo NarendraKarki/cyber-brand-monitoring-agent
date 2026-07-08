@@ -44,8 +44,8 @@ CRTSH_QUERY_URL = "https://crt.sh/?q={domain}&output=json"
 
 # Be a polite, rate-limited client — crt.sh is a free public service
 # maintained by volunteers, not a service to hammer.
-REQUEST_TIMEOUT_SECONDS = 10
-REQUEST_DELAY_SECONDS = 1.0
+REQUEST_TIMEOUT_SECONDS = 3
+REQUEST_DELAY_SECONDS = 0.5
 
 # Full IANA root zone TLD list — for a thorough, one-time pre-launch
 # brand sweep (as opposed to COMMON_TLD_VARIANTS, which is a curated,

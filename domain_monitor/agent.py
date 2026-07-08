@@ -116,7 +116,7 @@ def run_scan(
 
     # TIER 1
     print(f"  [TIER 1] Generating candidate domains...")
-    candidates    = sources.generate_all_candidates(brand)
+    candidates    = sources.generate_full_tld_candidates(brand) if mode == "full" else sources.generate_all_candidates(brand)
     print(f"  Candidates: {len(candidates)}")
     print(f"  [TIER 1] Running DNS + certificate sweep...")
     tier1_results = sources.scan_candidates(candidates)
