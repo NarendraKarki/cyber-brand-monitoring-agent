@@ -1,0 +1,77 @@
+
+============================================================
+  CYBER DOMAIN AND BRAND MONITORING AI AGENT
+  Protected brand: acmebank.uk
+  Scan started:    2026-07-08 05:56:54 UTC
+  Scan completed:  2026-07-08 06:11:35 UTC
+============================================================
+
+  SCAN SUMMARY
+────────────────────────────────────────────────────────────
+  Variants checked:  19
+  Resolving domains: 3
+  Domains analysed:  3
+
+  🔴 HIGH risk:      0
+  🟡 MEDIUM risk:    3
+  🟢 LOW risk:       0
+────────────────────────────────────────────────────────────
+
+  🟡 MEDIUM RISK FINDINGS
+────────────────────────────────────────────────────────────
+
+  Domain:       acmebank.co
+  IP:           15.197.148.33
+  Risk score:   6/10  |  Threat type: SUSPICIOUS
+  Urgency:      👁  Monitor closely
+  Certificates: 0 issued
+  Content:      SUSPICIOUS (MEDIUM confidence)
+  Indicators:   Domain name similar to protected brand, Redirect to unknown destination
+  Analysis:     The domain acmebank.co is suspicious due to its
+                similarity in name to the protected brand acmebank.uk.
+                Although it appears to be a parked domain with a
+                redirect, further investigation is warranted.
+  Actions:
+    → Monitor for changes
+    → Verify certificate transparency
+-------------------------------------------------------
+
+  Domain:       acmebank.com
+  IP:           76.223.54.146
+  Risk score:   6/10  |  Threat type: PHISHING
+  Urgency:      ⚡ IMMEDIATE ACTION REQUIRED
+  Certificates: 13 issued  |  Most recent: 2026-07-04T17:06:22
+  Content:      SUSPICIOUS (MEDIUM confidence)
+  Indicators:   Domain name similar but content unclear or partially loaded
+  Analysis:     The domain acmebank.com is a high-risk phishing threat
+                due to its similarity in name to the protected brand
+                acmebank.uk. The presence of certificates and recent
+                certificate issuance further increases the risk.
+  Actions:
+    → Monitor for suspicious login attempts
+    → Alert users about potential phishing threats
+-------------------------------------------------------
+
+  Domain:       acmebank.org
+  IP:           108.157.113.73
+  Risk score:   6/10  |  Threat type: SUSPICIOUS
+  Urgency:      👁  Monitor closely
+  Certificates: 0 issued
+  Content:      SUSPICIOUS (MEDIUM confidence)
+  Indicators:   Domain name similar but content unclear or partially loaded
+  Analysis:     The domain acmebank.org is suspiciously similar to the
+                protected brand acmebank.uk, with generic financial
+                content. Although there's no clear phishing evidence,
+                the similarity in domain name and uncertain content
+                classification warrant further monitoring.
+  Actions:
+    → Monitor for changes
+    → Verify certificate issuance
+-------------------------------------------------------
+
+  Cyber Domain and Brand Monitoring AI Agent
+  Module 7 — AI Security Platform
+  github.com/NarendraKarki/cyber-domain-monitoring-ai-agent
+  All LLM inference local — no data leaves your environment
+
+============================================================

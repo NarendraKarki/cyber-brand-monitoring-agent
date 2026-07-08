@@ -1,0 +1,45 @@
+
+============================================================
+  CYBER DOMAIN AND BRAND MONITORING AI AGENT
+  Protected brand: timesof.uk
+  Scan started:    2026-07-08 06:50:43 UTC
+  Scan completed:  2026-07-08 06:58:14 UTC
+============================================================
+
+  SCAN SUMMARY
+------------------------------------------------------------
+  Variants checked:  21
+  Resolving domains: 1
+  Domains analysed:  1
+
+  [HIGH]   HIGH risk:    0
+  [MEDIUM] MEDIUM risk:  1
+  [LOW]    LOW risk:     0
+------------------------------------------------------------
+
+  MEDIUM RISK FINDINGS
+------------------------------------------------------------
+
+  Domain:       timesof.com
+  IP:           76.223.54.146
+  Risk score:   6/10  |  Threat: SUSPICIOUS
+  Urgency:      MONITOR
+  Certs issued: 0
+  Content:      SUSPICIOUS (HIGH confidence)
+  Indicators:   Domain name similar but content unclear or partially loaded
+  Analysis:     This domain, timesof.com, is suspicious due to its
+                similarity in name to the protected brand timesof.uk.
+                Although there's no clear phishing attempt or brand
+                impersonation, the script redirecting users to an
+                unknown destination raises concerns.
+  Actions:
+    -> Monitor for further changes
+    -> Verify certificate transparency
+-------------------------------------------------------
+
+  Cyber Domain and Brand Monitoring AI Agent
+  Module 7 of 57 - AI Security Platform
+  github.com/NarendraKarki/cyber-domain-monitoring-ai-agent
+  All LLM inference is local - no data leaves your environment
+
+============================================================
