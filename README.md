@@ -1,3 +1,5 @@
+> **Legal Notice:** This tool is for authorised security research and legitimate brand protection only. Read [DISCLAIMER.md](DISCLAIMER.md) before use.
+
 # Cyber Domain and Brand Monitoring AI Agent
 
 **Module 7 of 57 — AI Security Platform**
